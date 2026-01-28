@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Session Manager & Context Switcher",
+  "version": "1.0.0",
+  "description": "A developer tool to capture JWT tokens and switch user contexts on the fly.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "*://*.yourservice.com/*",
+    "*://admin.yourservice.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "interceptor.js", 
+        "assets/logo.png"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.yourservice.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
