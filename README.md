@@ -1,36 +1,36 @@
-# 🛠️ Generic Context Switcher Extension
+# 🛠️ Extensão Genérica de Troca de Contexto
 
-A "White Label" Chrome Extension designed for developers who need to switch user contexts (e.g., impersonation, changing organizations) in Single Page Applications (SPAs) by injecting a toolbelt directly into the page.
+Uma Extensão Chrome "White Label" projetada para desenvolvedores que precisam alternar contextos de usuário (ex: personificação/impersonation, troca de organizações) em Single Page Applications (SPAs), injetando um painel de ferramentas diretamente na página.
 
-## 🚀 Features
+## 🚀 Funcionalidades
 
-* **Auth Interceptor:** Automatically captures JWT Bearer tokens from network requests (XHR/Fetch) by monkey-patching the browser API.
-* **Injected UI:** Adds a Floating Action Button (FAB) and a Navbar into your target application.
-* **Autocomplete:** Search and select contexts (Client/Provider) instantly.
-* **Isolated Storage:** Keeps session data secure in Chrome Storage.
+* **Interceptador de Autenticação:** Captura automaticamente tokens JWT Bearer de requisições de rede (XHR/Fetch) através de *monkey-patching* na API do navegador.
+* **Interface Injetada:** Adiciona um Botão de Ação Flutuante (FAB) e uma Barra de Navegação na sua aplicação alvo.
+* **Autocomplete:** Busque e selecione contextos (Cliente/Provedor) instantaneamente.
+* **Armazenamento Isolado:** Mantém os dados da sessão seguros no Chrome Storage.
 
-## ⚙️ Configuration (How to Use)
+## ⚙️ Configuração (Como Usar)
 
-1.  **Clone the Repo**
-2.  **Edit `manifest.json`**:
-    * Change `host_permissions` to your target domains.
-    * Change `content_scripts.matches` to where the script should run.
-3.  **Edit `content.js`**:
-    * Locate the `CONFIG` object at the top of the file.
-    * Update `apiBaseUrl` and endpoints to match your backend.
-    * Define `routes` (where the interceptor runs vs where the UI appears).
-4.  **Load in Chrome**:
-    * Go to `chrome://extensions`.
-    * Enable "Developer Mode".
-    * "Load Unpacked" and select the folder.
+1.  **Clone o Repositório**
+2.  **Edite o `manifest.json`**:
+    * Altere `host_permissions` para os seus domínios alvo.
+    * Altere `content_scripts.matches` para onde o script deve ser executado.
+3.  **Edite o `content.js`**:
+    * Localize o objeto `CONFIG` no topo do arquivo.
+    * Atualize a `apiBaseUrl` e os endpoints para corresponder ao seu backend.
+    * Defina as `routes` (onde o interceptador roda vs onde a UI aparece).
+4.  **Carregue no Chrome**:
+    * Acesse `chrome://extensions`.
+    * Ative o **"Modo do desenvolvedor"**.
+    * Clique em **"Carregar sem compactação"** (Load Unpacked) e selecione a pasta do projeto.
 
-## 📂 Project Structure
+## 📂 Estrutura do Projeto
 
-* `background.js`: Handles tab management.
-* `content.js`: Main logic. Handles UI injection and API communication.
-* `interceptor.js`: The script injected into the page context to listen for Headers.
-* `popup.html/js`: The extension's small popup window for setup.
+* `background.js`: Gerencia o controle de abas e ciclo de vida do Service Worker.
+* `content.js`: Lógica principal. Gerencia a injeção da UI e a comunicação com a API.
+* `interceptor.js`: O script injetado no contexto da página para "escutar" os Headers de requisição.
+* `popup.html/js`: A pequena janela popup da extensão para configurações iniciais.
 
-## ⚠️ Disclaimer
+## ⚠️ Aviso Legal
 
-This tool is for development and productivity purposes. Ensure you comply with your organization's security policies regarding token handling.
+Esta ferramenta é destinada para fins de desenvolvimento e produtividade. Certifique-se de cumprir as políticas de segurança da sua organização em relação ao manuseio de tokens de autenticação.
